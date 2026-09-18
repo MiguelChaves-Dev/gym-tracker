@@ -4,9 +4,11 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 public class Main {
+    private static final String ARQUIVO = "historico.csv";
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         HistoricoTreino historico = new HistoricoTreino();
+        historico.carregarArquivo(ARQUIVO);
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         boolean continuar = true;
@@ -23,12 +25,14 @@ public class Main {
                 System.out.println("Data inválida, usando hoje.");
                 data = LocalDate.now();
             }
-            RegistroTreino registro = new RegistroTreino(exercicio, peso, data);
-            historico.adicionarRegistro(registro);
+            historico.adicionarRegistro(new RegistroTreino(exercicio, peso, data));
 
             System.out.print("Adicionar outro registro? (s/n): ");
             continuar = input.nextLine().equalsIgnoreCase("s");
         }
+
+        historico.salvarEmArquivo(ARQUIVO);
+
         System.out.println("\n+-- Histórico completo --+");
         for (RegistroTreino r : historico.getTodos()){
             System.out.println(r);
