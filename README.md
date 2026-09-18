@@ -28,7 +28,7 @@ Em desenvolvimento — fase inicial de modelagem das classes.
 
 - [x] Modelagem inicial das classes (`Exercicio`, `RegistroTreino`, `HistoricoTreino`)
 - [ ] Entrada de dados via terminal (Scanner)
-- [ ] Persistência dos dados (arquivo ou banco de dados)
+- [x] Persistência dos dados (arquivo ou banco de dados)
 - [ ] Geração de gráfico de desempenho mensal
 - [ ] Interface gráfica (opcional)
 
