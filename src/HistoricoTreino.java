@@ -1,7 +1,9 @@
 import java.time.LocalDate;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class HistoricoTreino {
@@ -63,6 +65,14 @@ public class HistoricoTreino {
         } catch (IOException e) {
             System.out.println("Erro ao carregar arquivo: " + e.getMessage());
         }
+    }
+
+    public Map<String, List<RegistroTreino>> historicoDeVarios(List<Exercicio> exercicios){
+        Map<String, List<RegistroTreino>> resultado = new LinkedHashMap<>();
+        for (Exercicio ex: exercicios){
+            resultado.put(ex.getNome(), historicoDoExercicio(ex));
+        }
+        return resultado;
     }
 
 
